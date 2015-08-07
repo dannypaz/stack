@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="UTF-8">
+    <title>Angular Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+  </head>
+  <body>
+    <div ng-controller="MyController">
+      <h1>{{author.name}}</h1>
+      <p>{{author.title + ', ' + author.company }}</p>
+    </div>
+
+    <script>
+      function MyController($scope)
+      {
+        $scope.author = {
+            'name':'aaa',
+            'title': 'bbb',
+            'company':'ccc'
+        }
+      }
+    </script>
+  </body> 
+</html>
