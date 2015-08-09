@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+    <p id="countdown-holder", style="font-size:18px;"></p> 
+
+    <script src="./countdown.min.js"></script>
+    <script>  
+      var clock = document.getElementById("countdown-holder")  
+        , targetDate = new Date(2015, 7, 8);  
+
+      interval = setInterval(function(){
+        clock.innerHTML = countdown(targetDate).toString();
+
+        if (countdown(targetDate).start <= new Date()){
+          clock.innerHTML = "You've reached the date!";
+          clearInterval(interval);
+        }
+
+      }, 1000);
+    </script> 
+</body>
+</html>
+

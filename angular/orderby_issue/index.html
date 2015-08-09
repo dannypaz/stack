@@ -1,0 +1,73 @@
+<!--
+
+  Article: http://stackoverflow.com/questions/31908762/angularjs-ascending-distance-and-descending-distance-not-working-properly/31908971#31908971
+
+  Synopsis: Data that was being passed in was not formatted correctly to work with
+  Angular's orderBy. String -> Float
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div ng-app="myApp">
+    <div ng-controller="myCntrl">
+      <label>List Of students</label>
+      <div class="list" ng-click="popover.hide()">
+        <a class="item" ng-click="reverse=false;order('Place', false)" target="_blank">
+          ▲ A-Z
+        </a>
+        <a class="item" ng-click="order('-Place',false)" target="_blank">
+          ▼ Z-A
+        </a>
+        <a class="item" ng-click="reverse=false;order('Distance', false)" target="_blank">
+          ▲ Ascending
+        </a>
+        <a class="item" ng-click="order('-Distance',false)" target="_blank">
+          ▼ Descending 
+        </a>
+      </div>
+      <br>
+      <input ng-model="search" type="text" placeholder="search" />
+      <br>
+      <br>
+
+      <div ng-repeat="test in tests | filter:search" >{{test.Place}}
+        <br>{{test.Distance}}
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
+    <BR>
+    <BR>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+  <script>
+    angular.module('myApp', [])
+      .controller("myCntrl", function ($scope, $filter) {
+        $scope.tests = [
+          { Place: "Place1", Distance:4.97 },
+          { Place: "Place2", Distance:2.97 }, 
+          { Place: "Place3", Distance:3.23 },
+          { Place: "Place4", Distance:14.85 },
+          { Place: "Place5", Distance:7.04 },
+          { Place: "Place6", Distance:12.62 }
+        ];
+
+        var orderBy = $filter('orderBy');
+
+        $scope.tests = orderBy($scope.tests, '-Distance', false);
+        $scope.order = function(predicate, reverse){
+          $scope.tests = orderBy($scope.tests, predicate, reverse);
+        };
+
+      });
+  </script>
+</body>
+</html>
