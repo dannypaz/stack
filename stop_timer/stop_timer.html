@@ -15,7 +15,7 @@
       interval = setInterval(function(){
         clock.innerHTML = countdown(targetDate).toString();
 
-        if (countdown(targetDate).start <= new Date()){
+        if (targetDate <= new Date()){
           clock.innerHTML = "You've reached the date!";
           clearInterval(interval);
         }
