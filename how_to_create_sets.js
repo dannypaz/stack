@@ -1,5 +1,5 @@
-var mySet = [1,2,"HELLOOOOO"];
-var mySet2 = ["hi", 1];
+var mySet = [1,2,6];
+var mySet2 = [1,2,5];
 
 // Takes 2 Arrays
 // array properties: shift

@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/dannypaz/stack",
   "dependencies": {
+    "cheerio": "^0.19.0",
     "infinite-loop": "^0.2.2",
+    "request": "^2.60.0",
     "simplecrypt": "^0.1.0"
   }
 }

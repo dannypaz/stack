@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myapp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body data-ng-controller="myController">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
+  <script>
+    (function(){
+      'use strict';
+
+      angular.module('myapp', [])
+
+      .controller('myController', ['$scope', '$http', function($scope, $http){
+        var number = '071000013';
+        var routingApiUrl = 'https://routingnumbers.herokuapp.com/api/data.json?rn=' + number;
+
+        $http({
+          method: 'jsonp',
+          url: routingApiUrl + '&callback=JSON_CALLBACK',
+          responseType: "jsonp"
+        }).
+        success(function(data){
+            console.log('Success: ' + data);
+        }).
+        error(function(data){
+            console.log('Error: ' + data);
+        });
+
+      }]);
+    })();
+
+  </script>
+</body>
+</html>
